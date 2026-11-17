@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Discover exceptional objects, thoughtfully chosen for a life well lived.">
+  <title>Maison Aurelia — The Art of the Exceptional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #080808;
+      --panel: #121212;
+      --panel-soft: #171715;
+      --gold: #d4af37;
+      --champagne: #c5a46d;
+      --ivory: #f5f1e8;
+      --muted: #99958c;
+      --line: rgba(212, 175, 55, .18);
+      --serif: "Playfair Display", Georgia, serif;
+      --display: "Cinzel", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --ease: cubic-bezier(.2, .75, .25, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--ivory);
+      font-family: var(--sans);
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input, textarea, select { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+    .announcement {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0e0e0d;
+      color: #bdb8ac;
+      font-size: 10px;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,.035);
+    }
+    .announcement span { color: var(--gold); margin: 0 7px; }
+    .site-header {
+      height: 82px;
+      padding: 0 clamp(22px, 6vw, 88px);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: relative;
+      z-index: 5;
+      background: rgba(8,8,8,.95);
+    }
+    .nav-links { display: flex; align-items: center; gap: 29px; }
+    .nav-links a, .nav-action {
+      color: #d0cdc5;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      transition: color .25s ease;
+    }
+    .nav-links a:hover, .nav-action:hover { color: var(--gold); }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--ivory);
+      font-family: var(--display);
+      font-size: 19px;
+      letter-spacing: .13em;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--champagne);
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 18px;
+      transform: rotate(45deg);
+    }
+    .brand-mark span { transform: rotate(-45deg); }
+    .header-actions { display: flex; justify-content: flex-end; align-items: center; gap: 23px; }
+    .icon-button {
+      border: 0;
+      padding: 5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      cursor: pointer;
+      color: #d0cdc5;
+      transition: color .2s ease;
+    }
+    .icon-button:hover { color: var(--gold); }
+    .bag-count {
+      min-width: 17px;
+      height: 17px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid var(--champagne);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: 9px;
+    }
+    .mobile-menu { display: none; }
+
+    main { min-height: 65vh; }
+    .screen { display: none; animation: screenIn .45s var(--ease) both; }
+    .screen.active { display: block; }
+    @keyframes screenIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .hero {
+      min-height: 520px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(8,8,8,.98) 0%, rgba(8,8,8,.83) 35%, rgba(8,8,8,.16) 100%),
+        linear-gradient(0deg, rgba(8,8,8,.55), transparent 30%),
+        url("https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=2000&q=88") center 48% / cover;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      border: 1px solid rgba(212,175,55,.16);
+      pointer-events: none;
+    }
+    .hero-copy { position: relative; z-index: 1; max-width: 620px; padding: 70px clamp(35px, 11vw, 160px); }
+    .eyebrow {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      margin: 22px 0 17px;
+      font: 400 clamp(43px, 6.1vw, 76px)/1.07 var(--serif);
+      letter-spacing: -.025em;
+    }
+    .hero h1 em { color: var(--champagne); font-weight: 400; }
+    .hero-copy p { max-width: 390px; color: #c2bfb7; font-size: 13px; line-height: 1.9; }
+    .button {
+      min-height: 47px;
+      padding: 0 24px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 11px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: #11100d;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      transition: background .25s ease, color .25s ease, transform .25s ease, border-color .25s ease;
+    }
+    .button:hover { background: transparent; color: var(--gold); transform: translateY(-2px); }
+    .button-outline { background: transparent; color: var(--ivory); border-color: rgba(245,241,232,.28); }
+    .button-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .button-dark { background: transparent; color: var(--gold); }
+    .button-dark:hover { background: var(--gold); color: var(--black); }
+    .hero .button { margin-top: 21px; }
+
+    .section-wrap { padding: 78px clamp(22px, 7vw, 100px) 95px; }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 25px;
+      margin-bottom: 31px;
+    }
+    .section-heading h2 {
+      margin: 10px 0 0;
+      font: 400 clamp(30px, 4vw, 43px)/1.15 var(--serif);
+    }
+    .section-heading p { max-width: 360px; color: var(--muted); line-height: 1.8; margin: 0 0 3px; }
+    .catalog-tools {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 17px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+    }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-chip {
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      padding: 9px 13px;
+      cursor: pointer;
+      font-size: 10px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      transition: all .2s ease;
+    }
+    .filter-chip:hover, .filter-chip.active { color: var(--gold); border-color: var(--line); }
+    .search-wrap { position: relative; width: min(230px, 100%); }
+    .search-wrap input {
+      width: 100%;
+      background: transparent;
+      color: var(--ivory);
+      border: 0;
+      border-bottom: 1px solid rgba(255,255,255,.2);
+      padding: 10px 4px 10px 26px;
+      font-size: 12px;
+    }
+    .search-wrap svg { position: absolute; left: 2px; top: 10px; color: var(--muted); }
+    .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 31px 20px; }
+    .product-card { min-width: 0; }
+    .product-image {
+      position: relative;
+      aspect-ratio: .82;
+      overflow: hidden;
+      background: #151513;
+      cursor: pointer;
+    }
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s var(--ease), filter .5s ease;
+      filter: saturate(.83);
+    }
+    .product-card:hover .product-image img { transform: scale(1.055); filter: saturate(1); }
+    .product-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg,rgba(0,0,0,.32),transparent 40%); pointer-events: none; }
+    .product-tag {
+      position: absolute;
+      z-index: 1;
+      top: 13px;
+      left: 13px;
+      padding: 7px 9px;
+      background: rgba(8,8,8,.75);
+      color: var(--champagne);
+      font-size: 8px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .quick-add {
+      position: absolute;
+      z-index: 2;
+      bottom: 13px;
+      left: 13px;
+      right: 13px;
+      min-height: 40px;
+      opacity: 0;
+      transform: translateY(7px);
+      transition: all .25s ease;
+      background: rgba(8,8,8,.86);
+      color: var(--ivory);
+      border: 1px solid rgba(212,175,55,.65);
+      cursor: pointer;
+      font-size: 9px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .product-card:hover .quick-add, .quick-add:focus { opacity: 1; transform: translateY(0); }
+    .product-info { padding: 15px 2px 0; }
+    .product-category { color: var(--muted); font-size: 9px; letter-spacing: .17em; text-transform: uppercase; }
+    .product-name { display: block; margin: 7px 0 5px; font: 400 19px var(--serif); cursor: pointer; }
+    .product-name:hover { color: var(--champagne); }
+    .product-description { color: #89867f; font-size: 11px; line-height: 1.6; min-height: 35px; }
+    .product-price { margin-top: 12px; color: var(--champagne); font-size: 12px; letter-spacing: .06em; }
+    .no-results { color: var(--muted); padding: 55px 0; text-align: center; grid-column: 1/-1; }
+
+    .story-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 340px;
+      background: var(--panel);
+    }
+    .story-image { background: url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1100&q=85") center 44%/cover; }
+    .story-copy { padding: 58px clamp(30px, 7vw, 100px); display: flex; flex-direction: column; justify-content: center; }
+    .story-copy h2 { font: 400 36px/1.2 var(--serif); margin: 13px 0; }
+    .story-copy p { max-width: 420px; color: var(--muted); line-height: 1.9; }
+    .story-copy a { color: var(--gold); font-size: 10px; letter-spacing: .17em; text-transform: uppercase; margin-top: 14px; }
+
+    .page-shell { max-width: 1240px; margin: auto; padding: 54px clamp(22px, 7vw, 90px) 90px; }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 0;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .back-link:hover { color: var(--gold); }
+    .detail-layout { display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(35px, 8vw, 110px); align-items: center; margin-top: 22px; }
+    .detail-photo { aspect-ratio: .9; overflow: hidden; background: var(--panel); }
+    .detail-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .detail-copy { padding: 25px 0; }
+    .detail-copy h1 { font: 400 clamp(36px, 5vw, 57px)/1.1 var(--serif); margin: 15px 0 10px; }
+    .detail-price { color: var(--champagne); font-size: 18px; margin: 18px 0 23px; }
+    .detail-description { color: #aaa69c; line-height: 1.9; font-size: 13px; }
+    .specs { margin: 30px 0; border-top: 1px solid var(--line); }
+    .spec-row { display: flex; justify-content: space-between; gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .spec-row strong { color: #ded9ce; font-weight: 500; text-align: right; }
+    .detail-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .quantity-control { height: 47px; display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,.2); }
+    .quantity-control button { height: 100%; width: 38px; border: 0; background: transparent; cursor: pointer; color: var(--ivory); font-size: 18px; }
+    .quantity-control span { min-width: 24px; text-align: center; }
+    .favorite-button { height: 47px; width: 47px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.2); background: transparent; color: var(--champagne); cursor: pointer; }
+    .favorite-button.is-favorite { color: #e48d82; border-color: #e48d82; }
+
+    .page-title { font: 400 clamp(35px, 5vw, 52px)/1.1 var(--serif); margin: 12px 0 30px; }
+    .cart-layout { display: grid; grid-template-columns: 1fr 340px; gap: 55px; align-items: start; }
+    .cart-items { border-top: 1px solid var(--line); }
+    .cart-item { display: grid; grid-template-columns: 102px 1fr auto; gap: 22px; align-items: center; padding: 19px 0; border-bottom: 1px solid var(--line); }
+    .cart-item img { width: 102px; height: 112px; object-fit: cover; background: var(--panel); }
+    .cart-item h3 { margin: 0 0 7px; font: 400 20px var(--serif); }
+    .cart-item small { color: var(--muted); font-size: 10px; }
+    .cart-item-price { color: var(--champagne); white-space: nowrap; align-self: start; padding-top: 4px; }
+    .cart-item-controls { display: flex; align-items: center; gap: 16px; margin-top: 14px; }
+    .mini-quantity { height: 30px; display: inline-flex; border: 1px solid rgba(255,255,255,.17); align-items: center; }
+    .mini-quantity button { width: 29px; height: 28px; border: 0; background: transparent; cursor: pointer; }
+    .mini-quantity span { min-width: 22px; text-align: center; font-size: 11px; }
+    .remove-button { padding: 5px 0; border: 0; background: transparent; color: var(--muted); text-decoration: underline; cursor: pointer; font-size: 10px; }
+    .remove-button:hover { color: var(--gold); }
+    .summary-card { padding: 25px; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.008)); }
+    .summary-card h2 { margin: 0 0 24px; font: 400 24px var(--serif); }
+    .summary-row { display: flex; justify-content: space-between; gap: 15px; color: var(--muted); font-size: 12px; margin: 15px 0; }
+    .summary-row.total { border-top: 1px solid var(--line); padding-top: 18px; margin-top: 20px; color: var(--ivory); font-size: 14px; }
+    .summary-row.total strong { color: var(--gold); font-size: 16px; font-weight: 500; }
+    .summary-card .button { width: 100%; margin-top: 13px; }
+    .shipping-note { color: #77746d; font-size: 10px; line-height: 1.7; margin: 16px 0 0; text-align: center; }
+    .empty-state { text-align: center; padding: 75px 20px; border: 1px solid var(--line); }
+    .empty-state .empty-icon { color: var(--gold); font: 36px var(--serif); }
+    .empty-state h2 { font: 400 30px var(--serif); margin: 14px 0 8px; }
+    .empty-state p { color: var(--muted); margin: 0 0 24px; }
+
+    .checkout-layout { display: grid; grid-template-columns: 1fr 370px; gap: 60px; align-items: start; }
+    .form-section { margin-bottom: 34px; }
+    .form-section h2 { font: 400 23px var(--serif); margin: 0 0 19px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field.full { grid-column: 1/-1; }
+    .field label { color: #c4bfb4; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .field input, .field textarea {
+      width: 100%;
+      min-height: 45px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: #10100f;
+      color: var(--ivory);
+      padding: 12px 13px;
+      border-radius: 0;
+    }
+    .field textarea { min-height: 83px; resize: vertical; }
+    .field input::placeholder, .field textarea::placeholder { color: #66635d; }
+    .payment-options { display: grid; gap: 10px; }
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 56px;
+      padding: 13px 15px;
+      border: 1px solid rgba(255,255,255,.15);
+      color: #d6d1c6;
+      cursor: pointer;
+    }
+    .payment-option:has(input:checked) { border-color: var(--champagne); background: rgba(212,175,55,.045); }
+    .payment-option input { accent-color: var(--gold); }
+    .payment-option span { flex: 1; font-size: 12px; }
+    .payment-option small { color: var(--muted); font-size: 10px; }
+    .card-fields { display: none; margin-top: 14px; }
+    .card-fields.visible { display: grid; }
+    .demo-note { color: #89867f; font-size: 10px; line-height: 1.7; margin: 10px 0 0; }
+    .checkout-summary { position: sticky; top: 25px; }
+    .checkout-product { display: flex; align-items: center; gap: 12px; margin: 15px 0; }
+    .checkout-product img { width: 53px; height: 60px; object-fit: cover; background: var(--panel); }
+    .checkout-product-info { flex: 1; }
+    .checkout-product-info strong { display: block; font: 400 15px var(--serif); }
+    .checkout-product-info small { display: block; color: var(--muted); margin-top: 4px; font-size: 10px; }
+    .checkout-product-price { color: var(--champagne); font-size: 11px; white-space: nowrap; }
+    .form-error { color: #e79283; font-size: 12px; margin: 0 0 15px; min-height: 16px; }
+    .confirmation { min-height: 68vh; padding: 75px 20px; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .confirmation-inner { max-width: 640px; }
+    .success-mark {
+      width: 78px; height: 78px; margin: 0 auto 28px;
+      display: grid; place-items: center;
+      border: 1px solid var(--gold); border-radius: 50%;
+      color: var(--gold); font-size: 34px;
+      animation: successPop .65s var(--ease) both;
+      box-shadow: 0 0 35px rgba(212,175,55,.08);
+    }
+    @keyframes successPop { from { opacity: 0; transform: scale(.65); } to { opacity: 1; transform: scale(1); } }
+    .confirmation h1 { margin: 0 0 13px; font: 400 clamp(35px, 6vw, 54px) var(--display); letter-spacing: .06em; }
+    .confirmation .lead { color: var(--champagne); font: italic 19px var(--serif); }
+    .confirmation p { color: var(--muted); line-height: 1.8; }
+    .order-number { margin: 28px auto; padding: 17px 24px; width: fit-content; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: #d7d2c8; font-size: 11px; letter-spacing: .12em; }
+    .order-number strong { color: var(--gold); margin-left: 9px; }
+    .confirmed-items { color: #aaa69c; font-size: 12px; line-height: 1.9; margin: 22px 0; }
+    .confirmation .button { margin-top: 18px; }
+
+    footer { border-top: 1px solid rgba(255,255,255,.07); padding: 37px clamp(22px, 7vw, 100px); color: var(--muted); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 25px; }
+    .footer-brand { font: 14px var(--display); letter-spacing: .13em; color: #d8d1c3; }
+    footer small { font-size: 10px; letter-spacing: .05em; }
+    .footer-note { color: #77746d; text-align: center; font-size: 9px; line-height: 1.6; margin-top: 20px; }
+
+    .toast {
+      position: fixed; z-index: 20; right: 24px; bottom: 24px;
+      padding: 15px 19px; background: #1b1a17; border: 1px solid var(--line);
+      color: var(--ivory); font-size: 12px; transform: translateY(18px); opacity: 0;
+      pointer-events: none; transition: all .25s ease;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    @media (max-width: 900px) {
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 9px; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 27px 16px; }
+      .cart-layout, .checkout-layout { grid-template-columns: 1fr 300px; gap: 28px; }
+      .detail-layout { gap: 35px; }
+      .hero { min-height: 470px; background-position: 58% center; }
+    }
+    @media (max-width: 650px) {
+      .announcement { font-size: 8px; letter-spacing: .12em; }
+      .site-header { height: 68px; grid-template-columns: 1fr auto 1fr; padding: 0 18px; }
+      .brand { font-size: 15px; gap: 8px; }
+      .brand-mark { width: 25px; height: 25px; font-size: 15px; }
+      .nav-links { display: none; }
+      .header-actions { gap: 12px; }
+      .header-actions .search-shortcut { display: none; }
+      .mobile-menu { display: inline-flex; }
+      .hero { min-height: 490px; background-position: 62% center; }
+      .hero::after { inset: 10px; }
+      .hero-copy { padding: 55px 32px; }
+      .hero h1 { font-size: 47px; max-width: 390px; }
+      .section-wrap { padding: 57px 20px 70px; }
+      .section-heading { align-items: start; flex-direction: column; margin-bottom: 24px; }
+      .section-heading p { font-size: 12px; }
+      .catalog-tools { align-items: stretch; flex-direction: column-reverse; gap: 10px; }
+      .filters { gap: 2px; }
+      .filter-chip { padding: 8px 9px; font-size: 9px; }
+      .search-wrap { width: 100%; }
+      .product-grid { gap: 24px 12px; }
+      .product-image { aspect-ratio: .77; }
+      .quick-add { opacity: 1; transform: none; left: 8px; right: 8px; bottom: 8px; min-height: 35px; }
+      .product-name { font-size: 17px; }
+      .product-description { font-size: 10px; }
+      .story-strip { grid-template-columns: 1fr; }
+      .story-image { min-height: 220px; }
+      .story-copy { padding: 38px 26px; }
+      .story-copy h2 { font-size: 31px; }
+      .page-shell { padding: 35px 20px 65px; }
+      .detail-layout { grid-template-columns: 1fr; gap: 15px; margin-top: 12px; }
+      .detail-photo { aspect-ratio: .95; }
+      .detail-copy { padding: 10px 0; }
+      .detail-copy h1 { font-size: 40px; }
+      .cart-layout, .checkout-layout { grid-template-columns: 1fr; gap: 28px; }
+      .cart-item { grid-template-columns: 77px 1fr auto; gap: 13px; }
+      .cart-item img { width: 77px; height: 88px; }
+      .cart-item h3 { font-size: 17px; }
+      .cart-item-price { font-size: 11px; }
+      .summary-card { padding: 21px; }
+      .checkout-summary { position: static; grid-row: 1; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .confirmation { min-height: 70vh; padding: 55px 18px; }
+      .toast { left: 16px; right: 16px; bottom: 16px; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">Complimentary delivery on all orders <span>✦</span> A little luxury, beautifully delivered</div>
+
+  <header class="site-header">
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#collection" data-nav="collection">Collections</a>
+      <a href="#collection" data-filter-link="Timepieces">Timepieces</a>
+      <a href="#story">Our Story</a>
+    </nav>
+    <a class="brand" href="#collection" aria-label="Maison Aurelia homepage">
+      <span class="brand-mark"><span>A</span></span>
+      <span>MAISON AURELIA</span>
+    </a>
+    <div class="header-actions">
+      <button class="icon-button search-shortcut" id="searchShortcut" aria-label="Search products">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        <span class="nav-action">Search</span>
+      </button>
+      <button class="icon-button" id="bagButton" aria-label="Open shopping bag">
+        <svg width="17" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+        <span class="bag-count" id="bagCount">0</span>
+      </button>
+      <button class="icon-button mobile-menu" id="mobileBag" aria-label="Open shopping bag">
+        <span class="nav-action">Bag</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="screen active" id="catalogScreen" aria-label="Product catalog">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">The art of the exceptional</div>
+          <h1>Quiet luxury.<br><em>Lasting allure.</em></h1>
+          <p>Considered pieces, chosen for their beauty, craftsmanship, and the stories they carry.</p>
+          <button class="button" id="discoverButton">Discover the collection <span>→</span></button>
+        </div>
+      </div>
+
+      <section class="section-wrap" id="collection">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">Curated with intention</div>
+            <h2>The Aurelia Collection</h2>
+          </div>
+          <p>Objects of enduring elegance, sourced from makers who believe the finest things are made to be treasured.</p>
+        </div>
+        <div class="catalog-tools">
+          <div class="filters" id="filters" aria-label="Filter products"></div>
+          <label class="search-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+            <input id="productSearch" type="search" placeholder="Find something beautiful…" aria-label="Search products">
+          </label>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+
+      <section class="story-strip" id="story">
+        <div class="story-image" role="img" aria-label="A thoughtfully curated fashion collection"></div>
+        <div class="story-copy">
+          <div class="eyebrow">A more considered kind of luxury</div>
+          <h2>Made to mean<br>more.</h2>
+          <p>We believe the pieces we keep close should feel personal. Our collection celebrates thoughtful design, enduring materials, and the quiet confidence of true craftsmanship.</p>
+          <a href="#collection" data-nav="collection">Explore our point of view &nbsp; →</a>
+        </div>
+      </section>
+    </section>
+
+    <section class="screen" id="detailScreen" aria-label="Product details">
+      <div class="page-shell">
+        <button class="back-link" data-nav="collection">← &nbsp; Back to collection</button>
+        <div class="detail-layout" id="detailContent"></div>
+      </div>
+    </section>
+
+    <section class="screen" id="cartScreen" aria-label="Shopping bag">
+      <div class="page-shell">
+        <div class="eyebrow">Your selection</div>
+        <h1 class="page-title">The Shopping Bag</h1>
+        <div id="cartContent"></div>
+      </div>
+    </section>
+
+    <section class="screen" id="checkoutScreen" aria-label="Checkout">
+      <div class="page-shell">
+        <button class="back-link" data-nav="cart">← &nbsp; Return to your bag</button>
+        <div class="eyebrow" style="margin-top:22px">Almost yours</div>
+        <h1 class="page-title">A few final details</h1>
+        <div class="checkout-layout">
+          <form id="checkoutForm" novalidate>
+            <div class="form-section">
+              <h2>Where should we deliver?</h2>
+              <div class="form-grid">
+                <div class="field"><label for="fullName">Full name</label><input id="fullName" name="fullName" autocomplete="name" required placeholder="Your full name"></div>
+                <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="+1 (555) 000-0000"></div>
+                <div class="field full"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+                <div class="field full"><label for="address">Delivery address</label><textarea id="address" name="address" autocomplete="street-address" required placeholder="Street address, city, postal code, country"></textarea></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <h2>Choose your payment</h2>
+              <div class="payment-options">
+                <label class="payment-option"><input type="radio" name="payment" value="delivery" checked><span>Cash on delivery</span><small>Pay when it arrives</small></label>
+                <label class="payment-option"><input type="radio" name="payment" value="card"><span>Credit or debit card</span><small>Secure demo checkout</small></label>
+              </div>
+              <div class="form-grid card-fields" id="cardFields">
+                <div class="field full"><label for="cardNumber">Card number</label><input id="cardNumber" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242"></div>
+                <div class="field"><label for="cardExpiry">Expiry</label><input id="cardExpiry" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / YY"></div>
+                <div class="field"><label for="cardCvc">Security code</label><input id="cardCvc" inputmode="numeric" autocomplete="cc-csc" placeholder="CVC"></div>
+              </div>
+              <p class="demo-note">This is a demo storefront. Card details are not transmitted, saved, or charged.</p>
+            </div>
+            <p class="form-error" id="formError" role="alert"></p>
+            <button type="submit" class="button">Confirm your order &nbsp; →</button>
+          </form>
+          <aside class="summary-card checkout-summary" id="checkoutSummary"></aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="confirmationScreen" aria-label="Order confirmation">
+      <div class="confirmation">
+        <div class="confirmation-inner" id="confirmationContent"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">MAISON AURELIA</div>
+      <small>Objects of enduring elegance.</small>
+      <small>© <span id="year"></span> Maison Aurelia</small>
+    </div>
+    <div class="footer-note">A concept storefront. Product availability and order confirmation are simulated for demonstration.</div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    "use strict";
+
+    const products = [
+      {
+        id: "celeste-watch", name: "Celeste No. 8", category: "Timepieces",
+        price: 4280, tag: "Signature",
+        description: "An heirloom in the making. A precision-crafted timepiece with a brushed gold case, midnight dial, and an understated sense of occasion.",
+        image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1100&q=88",
+        short: "A quiet statement in brushed gold.",
+        specs: [["Material", "18k gold-plated steel"], ["Movement", "Swiss automatic"], ["Case", "38 mm · sapphire glass"], ["Warranty", "Five-year atelier care"]]
+      },
+      {
+        id: "noir-parfum", name: "Noir Élixir", category: "Fragrance",
+        price: 340, tag: "Bestseller",
+        description: "An intimate, lingering composition: black amber opens into a heart of rose and smoked cedar, softened by warm vanilla and skin musk.",
+        image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1100&q=88",
+        short: "Amber, rose, and a little mystery.",
+        specs: [["Concentration", "Eau de parfum"], ["Volume", "75 ml"], ["Notes", "Amber · rose · cedar"], ["Origin", "Grasse, France"]]
+      },
+      {
+        id: "atelier-bag", name: "The Atelier Bag", category: "Leather",
+        price: 1890, tag: "Small edition",
+        description: "Sculptural yet effortless, this beautifully balanced carryall is cut from supple Italian leather and finished by hand with brushed gold hardware.",
+        image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1100&q=88",
+        short: "Italian leather, finished by hand.",
+        specs: [["Material", "Full-grain Italian leather"], ["Lining", "Suede-touch microsuede"], ["Dimensions", "28 × 20 × 11 cm"], ["Made in", "Florence, Italy"]]
+      },
+      {
+        id: "solenne-shades", name: "Solenne Sunglasses", category: "Accessories",
+        price: 560, tag: "New arrival",
+        description: "A modern classic with a flattering silhouette. Hand-finished acetate frames meet softly tinted lenses for a refined finish in every light.",
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1100&q=88",
+        short: "A considered silhouette for brighter days.",
+        specs: [["Frame", "Italian acetate"], ["Lens", "UV400 protection"], ["Fit", "Universal medium"], ["Includes", "Leather case & cloth"]]
+      },
+      {
+        id: "lumiere-earrings", name: "Lumière Earrings", category: "Jewelry",
+        price: 720, tag: "Hand-finished",
+        description: "A pair of luminous, sculptural hoops with a gentle organic form, designed to catch the light without ever asking for attention.",
+        image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1100&q=88",
+        short: "Sculptural gold with a softer touch.",
+        specs: [["Material", "Recycled 18k gold vermeil"], ["Length", "26 mm"], ["Closure", "Secure hinged clasp"], ["Made in", "Copenhagen, Denmark"]]
+      },
+      {
+        id: "nocturne-candle", name: "Nocturne Candle", category: "Objects",
+        price: 165, tag: "Atelier exclusive",
+        description: "A small ritual for the end of the day. Hand-poured botanical wax releases notes of cedarwood, fig leaf, and quiet evenings.",
+        image: "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=1100&q=88",
+        short: "Cedarwood and fig, hand-poured.",
+        specs: [["Wax", "Botanical wax blend"], ["Burn time", "Approximately 55 hours"], ["Vessel", "Hand-blown smoked glass"], ["Made in", "Paris, France"]]
+      },
+      {
+        id: "meridian-watch", name: "Meridian Automatic", category: "Timepieces",
+        price: 3650, tag: "Limited",
+        description: "A beautifully restrained automatic watch, pairing a deep forest dial with a polished steel case and a considered alligator-embossed strap.",
+        image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1100&q=88",
+        short: "A precision classic with a modern soul.",
+        specs: [["Material", "Polished stainless steel"], ["Movement", "Swiss automatic"], ["Case", "40 mm · sapphire glass"], ["Water resistance", "10 ATM"]]
+      },
+      {
+        id: "velour-wallet", name: "Velour Card Case", category: "Leather",
+        price: 390, tag: "Everyday icon",
+        description: "A beautifully compact essential in soft, responsibly sourced leather. Thoughtfully arranged for the few things you need close at hand.",
+        image: "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=1100&q=88",
+        short: "A small essential, made to last.",
+        specs: [["Material", "Vegetable-tanned leather"], ["Slots", "Six card compartments"], ["Dimensions", "10 × 7.5 cm"], ["Made in", "Milan, Italy"]]
+      }
+    ];
+
+    const STORAGE_KEY = "maison-aurelia-cart-v1";
+    const screens = {
+      catalog: document.getElementById("catalogScreen"),
+      detail: document.getElementById("detailScreen"),
+      cart: document.getElementById("cartScreen"),
+      checkout: document.getElementById("checkoutScreen"),
+      confirmation: document.getElementById("confirmationScreen")
+    };
+    let cart = readCart();
+    let activeCategory = "All pieces";
+    let selectedProductId = null;
+    let detailQuantity = 1;
+    let favorites = new Set();
+    let toastTimer;
+
+    function readCart() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        if (!Array.isArray(saved)) return [];
+        return saved.filter(item => products.some(p => p.id === item.id) && Number.isFinite(item.qty) && item.qty > 0)
+          .map(item => ({ id: item.id, qty: Math.floor(item.qty) }));
+      } catch { return []; }
+    }
+    function saveCart() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); } catch {}
+      updateBagCount();
+    }
+    function money(value) {
+      return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(value);
+    }
+    function productById(id) { return products.find(product => product.id === id); }
+    function cartCount() { return cart.reduce((sum, item) => sum + item.qty, 0); }
+    function subtotal() { return cart.reduce((sum, item) => sum + productById(item.id).price * item.qty, 0); }
+    function updateBagCount() { document.getElementById("bagCount").textContent = cartCount(); }
+
+    function showScreen(name) {
+      if (!screens[name]) name = "catalog";
+      Object.entries(screens).forEach(([key, screen]) => screen.classList.toggle("active", key === name));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (name === "cart") renderCart();
+      if (name === "checkout") renderCheckoutSummary();
+      if (name === "catalog") renderProducts();
+    }
+    function toast(message) {
+      const el = document.getElementById("toast");
+      el.textContent = message;
+      el.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove("show"), 2300);
+    }
+    function addToCart(id, quantity = 1) {
+      const item = cart.find(row => row.id === id);
+      if (item) item.qty += quantity;
+      else cart.push({ id, qty: quantity });
+      saveCart();
+      toast("Added to your shopping bag");
+    }
+
+    function renderFilters() {
+      const categories = ["All pieces", ...new Set(products.map(product => product.category))];
+      document.getElementById("filters").innerHTML = categories.map(category =>
+        `<button class="filter-chip${activeCategory === category ? " active" : ""}" data-category="${category}">${category}</button>`
+      ).join("");
+    }
+    function renderProducts() {
+      renderFilters();
+      const query = document.getElementById("productSearch").value.trim().toLowerCase();
+      const list = products.filter(product =>
+        (activeCategory === "All pieces" || product.category === activeCategory) &&
+        (!query || `${product.name} ${product.category} ${product.description}`.toLowerCase().includes(query))
+      );
+      const grid = document.getElementById("productGrid");
+      if (!list.length) {
+        grid.innerHTML = '<div class="no-results">No pieces found. Try another search or collection.</div>';
+        return;
+      }
+      grid.innerHTML = list.map(product => `
+        <article class="product-card">
+          <div class="product-image" data-open-product="${product.id}" tabindex="0" role="button" aria-label="View ${product.name}">
+            <img src="${product.image}" alt="${product.name}" loading="lazy">
+            <span class="product-tag">${product.tag}</span>
+            <button class="quick-add" data-add="${product.id}" aria-label="Add ${product.name} to bag">Add to bag &nbsp; +</button>
+          </div>
+          <div class="product-info">
+            <div class="product-category">${product.category}</div>
+            <a class="product-name" href="#product/${product.id}" data-open-product="${product.id}">${product.name}</a>
+            <div class="product-description">${product.short}</div>
+            <div class="product-price">${money(product.price)}</div>
+          </div>
+        </article>`).join("");
+    }
+
+    function openProduct(id) {
+      const product = productById(id);
+      if (!product) return;
+      selectedProductId = id;
+      detailQuantity = 1;
+      document.getElementById("detailContent").innerHTML = `
+        <div class="detail-photo"><img src="${product.image}" alt="${product.name}"></div>
+        <div class="detail-copy">
+          <div class="eyebrow">${product.category} &nbsp; / &nbsp; ${product.tag}</div>
+          <h1>${product.name}</h1>
+          <div class="detail-price">${money(product.price)}</div>
+          <p class="detail-description">${product.description}</p>
+          <div class="specs">${product.specs.map(([label, value]) => `<div class="spec-row"><span>${label}</span><strong>${value}</strong></div>`).join("")}</div>
+          <div class="detail-actions">
+            <div class="quantity-control" aria-label="Quantity">
+              <button type="button" data-detail-qty="-1" aria-label="Decrease quantity">−</button>
+              <span id="detailQty">1</span>
+              <button type="button" data-detail-qty="1" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="button" data-detail-add="${product.id}">Add to bag &nbsp; →</button>
+            <button class="favorite-button${favorites.has(id) ? " is-favorite" : ""}" data-favorite="${id}" aria-label="Add to favorites" title="Add to favorites">♡</button>
+          </div>
+        </div>`;
+      showScreen("detail");
+    }
+
+    function renderCart() {
+      const container = document.getElementById("cartContent");
+      if (!cart.length) {
+        container.innerHTML = `<div class="empty-state"><div class="empty-icon">✧</div><h2>Your bag is waiting</h2><p>Discover something you’ll treasure.</p><button class="button" data-nav="collection">Explore the collection &nbsp; →</button></div>`;
+        return;
+      }
+      container.innerHTML = `
+        <div class="cart-layout">
+          <div class="cart-items">${cart.map(item => {
+            const product = productById(item.id);
+            return `<article class="cart-item">
+              <img src="${product.image}" alt="${product.name}">
+              <div>
+                <h3>${product.name}</h3><small>${product.category}</small>
+                <div class="cart-item-controls">
+                  <div class="mini-quantity">
+                    <button type="button" data-cart-change="${item.id}" data-delta="-1" aria-label="Decrease ${product.name} quantity">−</button>
+                    <span>${item.qty}</span>
+                    <button type="button" data-cart-change="${item.id}" data-delta="1" aria-label="Increase ${product.name} quantity">+</button>
+                  </div>
+                  <button type="button" class="remove-button" data-remove="${item.id}">Remove</button>
+                </div>
+              </div>
+              <div class="cart-item-price">${money(product.price * item.qty)}</div>
+            </article>`;
+          }).join("")}</div>
+          <aside class="summary-card">
+            <h2>Order summary</h2>
+            <div class="summary-row"><span>Subtotal</span><span>${money(subtotal())}</span></div>
+            <div class="summary-row"><span>Delivery</span><span>Complimentary</span></div>
+            <div class="summary-row total"><span>Total</span><strong>${money(subtotal())}</strong></div>
+            <button class="button" data-nav="checkout">Proceed to checkout &nbsp; →</button>
+            <button class="button button-outline" style="width:100%;margin-top:10px" data-nav="collection">Continue shopping</button>
+            <p class="shipping-note">Complimentary, insured delivery on every order.</p>
+          </aside>
+        </div>`;
+    }
+
+    function renderCheckoutSummary() {
+      const summary = document.getElementById("checkoutSummary");
+      if (!cart.length) {
+        summary.innerHTML = `<h2>Your bag is empty</h2><p class="shipping-note">Add a piece to your bag before checking out.</p><button type="button" class="button" data-nav="collection">Explore collection</button>`;
+        return;
+      }
+      summary.innerHTML = `<h2>Your order</h2>
+        ${cart.map(item => {
+          const product = productById(item.id);
+          return `<div class="checkout-product">
+            <img src="${product.image}" alt="">
+            <div class="checkout-product-info"><strong>${product.name}</strong><small>Quantity: ${item.qty}</small></div>
+            <div class="checkout-product-price">${money(product.price * item.qty)}</div>
+          </div>`;
+        }).join("")}
+        <div class="summary-row"><span>Delivery</span><span>Complimentary</span></div>
+        <div class="summary-row total"><span>Total</span><strong>${money(subtotal())}</strong></div>`;
+    }
+
+    function showConfirmation(order) {
+      const safeName = order.name.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+      document.getElementById("confirmationContent").innerHTML = `
+        <div class="success-mark" aria-hidden="true">✓</div>
+        <div class="eyebrow">A moment worth remembering</div>
+        <h1>ORDER CONFIRMED</h1>
+        <div class="lead">Thank you, ${safeName}.</div>
+        <p>Your order has been beautifully noted. We’ll send your delivery details to your email shortly.</p>
+        <div class="order-number">ORDER NUMBER <strong>${order.number}</strong></div>
+        <div class="confirmed-items">${order.items.map(item => `${item.qty} × ${item.name}`).join("<br>")}<br><br><span style="color:#d4af37">Total paid: ${money(order.total)}</span></div>
+        <p>Estimated delivery: <strong style="color:#ddd5c5">3–5 business days</strong><br>Complimentary insured delivery, with care.</p>
+        <button class="button" data-home>Return to the collection &nbsp; →</button>`;
+      showScreen("confirmation");
+    }
+
+    document.addEventListener("click", event => {
+      const filter = event.target.closest("[data-category]");
+      if (filter) {
+        activeCategory = filter.dataset.category;
+        renderProducts();
+        return;
+      }
+      const add = event.target.closest("[data-add]");
+      if (add) {
+        event.stopPropagation();
+        addToCart(add.dataset.add);
+        return;
+      }
+      const productLink = event.target.closest("[data-open-product]");
+      if (productLink) {
+        event.preventDefault();
+        openProduct(productLink.dataset.openProduct);
+        return;
+      }
+      const nav = event.target.closest("[data-nav]");
+      if (nav) {
+        event.preventDefault();
+        if (nav.dataset.nav === "collection") showScreen("catalog");
+        else showScreen(nav.dataset.nav);
+        return;
+      }
+      const change = event.target.closest("[data-cart-change]");
+      if (change) {
+        const item = cart.find(row => row.id === change.dataset.cartChange);
+        if (item) item.qty = Math.max(1, item.qty + Number(change.dataset.delta));
+        saveCart(); renderCart();
+        return;
+      }
+      const remove = event.target.closest("[data-remove]");
+      if (remove) {
+        cart = cart.filter(item => item.id !== remove.dataset.remove);
+        saveCart(); renderCart(); toast("Piece removed from your bag");
+        return;
+      }
+      const detailQty = event.target.closest("[data-detail-qty]");
+      if (detailQty) {
+        detailQuantity = Math.max(1, detailQuantity + Number(detailQty.dataset.detailQty));
+        document.getElementById("detailQty").textContent = detailQuantity;
+        return;
+      }
+      const detailAdd = event.target.closest("[data-detail-add]");
+      if (detailAdd) { addToCart(detailAdd.dataset.detailAdd, detailQuantity); return; }
+      const favorite = event.target.closest("[data-favorite]");
+      if (favorite) {
+        const id = favorite.dataset.favorite;
+        favorites.has(id) ? favorites.delete(id) : favorites.add(id);
+        favorite.classList.toggle("is-favorite", favorites.has(id));
+        favorite.textContent = favorites.has(id) ? "♥" : "♡";
+        toast(favorites.has(id) ? "Saved to your favorites" : "Removed from your favorites");
+        return;
+      }
+      if (event.target.closest("[data-home]")) {
+        cart = [];
+        saveCart();
+        document.getElementById("checkoutForm").reset();
+        document.getElementById("cardFields").classList.remove("visible");
+        showScreen("catalog");
+        return;
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      const productLink = event.target.closest("[data-open-product]");
+      if (productLink && (event.key === "Enter" || event.key === " ")) {
+        event.preventDefault();
+        openProduct(productLink.dataset.openProduct);
+      }
+    });
+
+    document.getElementById("productSearch").addEventListener("input", renderProducts);
+    document.getElementById("searchShortcut").addEventListener("click", () => {
+      showScreen("catalog");
+      document.getElementById("productSearch").focus();
+      document.getElementById("collection").scrollIntoView({ behavior: "smooth" });
+    });
+    document.getElementById("bagButton").addEventListener("click", () => showScreen("cart"));
+    document.getElementById("mobileBag").addEventListener("click", () => showScreen("cart"));
+    document.getElementById("discoverButton").addEventListener("click", () => document.getElementById("collection").scrollIntoView({ behavior: "smooth" }));
+    document.querySelectorAll("[data-filter-link]").forEach(link => link.addEventListener("click", event => {
+      event.preventDefault();
+      activeCategory = link.dataset.filterLink;
+      showScreen("catalog");
+      document.getElementById("collection").scrollIntoView({ behavior: "smooth" });
+    }));
+    document.querySelectorAll('a[href="#story"]').forEach(link => link.addEventListener("click", event => {
+      event.preventDefault();
+      showScreen("catalog");
+      document.getElementById("story").scrollIntoView({ behavior: "smooth" });
+    }));
+
+    document.querySelectorAll('input[name="payment"]').forEach(input => input.addEventListener("change", () => {
+      const cardFields = document.getElementById("cardFields");
+      const useCard = document.querySelector('input[name="payment"]:checked').value === "card";
+      cardFields.classList.toggle("visible", useCard);
+      ["cardNumber", "cardExpiry", "cardCvc"].forEach(id => {
+        const field = document.getElementById(id);
+        field.required = useCard;
+      });
+    }));
+
+    document.getElementById("checkoutForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const error = document.getElementById("formError");
+      error.textContent = "";
+      if (!cart.length) {
+        error.textContent = "Your shopping bag is empty. Please choose a piece before placing an order.";
+        return;
+      }
+      if (!form.reportValidity()) return;
+
+      const payment = new FormData(form).get("payment");
+      if (payment === "card") {
+        const cardNumber = document.getElementById("cardNumber").value.replace(/\s+/g, "");
+        const expiry = document.getElementById("cardExpiry").value.trim();
+        const cvc = document.getElementById("cardCvc").value.trim();
+        if (!/^\d{12,19}$/.test(cardNumber) || !/^\d{2}\s*\/\s*\d{2}$/.test(expiry) || !/^\d{3,4}$/.test(cvc)) {
+          error.textContent = "Please enter a valid demo card number, expiry (MM / YY), and security code.";
+          return;
+        }
+      }
+      const order = {
+        name: document.getElementById("fullName").value.trim().split(/\s+/)[0] || "there",
+        number: "MA-" + Math.random().toString(36).slice(2, 8).toUpperCase(),
+        total: subtotal(),
+        items: cart.map(item => ({ ...productById(item.id), qty: item.qty }))
+      };
+      cart = [];
+      saveCart();
+      showConfirmation(order);
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    updateBagCount();
+    renderProducts();
+  </script>
+</body>
+</html>
